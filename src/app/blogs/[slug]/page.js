@@ -1,19 +1,72 @@
 import Image from "next/image";
 import { allBlogs } from "@/.contentlayer/generated";
 import { slug } from "github-slugger";
-import Tags from "../../components/Elements/Tags";
-import BlogDetails from "../../components/Blog/BlogDetails";
-import Tag from "../../components/Elements/Tags";
-import RenderMdx from "../../components/Blog/RenderMdx";
+import Tags from "../../../components/Elements/Tags";
+import BlogDetails from "../../../components/Blog/BlogDetails";
+import Tag from "../../../components/Elements/Tags";
+import RenderMdx from "../../../components/Blog/RenderMdx";
+import { urlToUrlWithoutFlightMarker } from "next/dist/client/components/app-router";
+import siteMetadata from "../../utils/siteMetaData";
 
-export async function generateStaticParams(){
-
-
+export async function generateStaticParams({ params }) {
   return allBlogs.map((blog) => blog._raw.flattenedPath === params.slug);
 }
 
+export async function generateMetadata({ params }) {
+  const blog = allBlogs.find((blog) => ({
+    slug: blog._raw.flattenedPath === params.slug,
+  }));
+  if (!blog) {
+    return;
+  }
+
+  const publishedAt = new Date(blog.publishedAt).toISOString();
+  const modifieddAt = new Date(
+    blog.updatedAt || blog.publishedAt
+  ).toISOString();
+
+  let imageList = [siteMetadata.socialBanner];
+
+  if (blog.image) {
+    imageList =
+      typeof blog.image.filePath === "string"
+        ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
+        : blog.image;
+  }
+  const ogImages = imageList.map((img) => {
+    return { url: img.includes("http") ? img : siteMetadata.siteUrl + img };
+  });
+
+  const authors = blog?.author ? [blog.author] : siteMetadata.author;
+
+  return {
+    title: blog.title,
+    description: blog.description,
+    openGraph: {
+      title: blog.title,
+      description: blog.description,
+      url: siteMetadata.siteUrl + blog.url,
+      siteName: siteMetadata.title,
+      locale: "en_US",
+      type: "article",
+      publishedTime: publishedAt,
+      modifiedTime: modifieddAt,
+      images: ogImages,
+      author: authors.length > 0 ? authors : [siteMetadata.authors],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.description,
+      images: ogImages,
+    },
+  };
+}
+
 export default function BlogPage({ params }) {
-  const blog = allBlogs.find((blog) => ({slug: blog._raw.flattenedPath}));
+  const blog = allBlogs.find((blog) => ({
+    slug: blog._raw.flattenedPath === params.slug,
+  }));
   return (
     <article>
       <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
@@ -23,11 +76,11 @@ export default function BlogPage({ params }) {
             link={`/categories/${slug(blog.tags[0])}`}
             className="px-6 text-sm py-2"
           />
-          <h1 className="inline-block mt-6 font-semibold capitalize text-light text-5xl leading-normal relative w-5/6">
+          <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
             {blog.title}
           </h1>
         </div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60">
+        <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40">
           <Image
             src={blog.image.filePath.replace("../public", "")}
             placeholder="blur"
@@ -36,15 +89,17 @@ export default function BlogPage({ params }) {
             width={blog.image.width}
             height={blog.image.height}
             className="aspect-square w-full h-full object-cover object-center"
+            priority
+            sizes="100vw"
           />
         </div>
       </div>
       <BlogDetails blog={blog} slug={params.slug} />
 
-      <div className="grid grid-cols-12 gap-16 mt-8 px-10">
-        <div className="col-span-4">
+      <div className="grid grid-cols-12 gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10">
+        <div className="col-span-12 lg:col-span-4">
           <details
-            className="border-[1px] border-solid border-dark text-dark rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
+            className="border-[1px] border-solid border-dark dark:border-light dark:text-light text-dark rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
             open
           >
             <summary className="text-lg font-semibold capitalize cursor-pointer">
@@ -78,3 +133,5 @@ export default function BlogPage({ params }) {
     </article>
   );
 }
+
+

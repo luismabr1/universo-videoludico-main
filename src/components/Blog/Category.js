@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { cx } from '../../utils';
+import { cx } from '../../app/utils';
 
 const Category = ({link="#", name, active, ...props}) => {
     return (

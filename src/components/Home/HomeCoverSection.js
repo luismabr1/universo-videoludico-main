@@ -1,5 +1,5 @@
 
-import { sortBlogs } from '../../utils';
+import { sortBlogs } from '../../app/utils';
 import Image from 'next/image'
 import Tags from '../Elements/Tags';
 import Link from 'next/link';
@@ -23,14 +23,14 @@ const HomeCoverSection = ({blogs}) => {
                     sizes='50vw'
                     priority
                 />
-                <div className='w-3/4 p-16 flex flex-col items-start justify-center z-0 text-light'>
+                <div className='w-full lg:w-3/4 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col items-start justify-center z-0 text-light'>
                     <Tags link={`/categories/${slug(blog.tags[0])}`} name={blog.tags[0]}/>
                     <Link href={blog.url} className='mt-6'>
-                        <h1 className='font-bold capitalize text-4xl'>
-                            <span className='bg-gradient-to-r from-accent to-accent bg-[length:0px_6px] hover:bg-[length:100%_6px] bg-bottom bg-no-repeat transition-[background-size] duration-500'>{blog.title}</span>
+                        <h1 className='font-bold capitalize text-lg sm:text-xl md:text-3xl lg:text-4xl'>
+                            <span className='bg-gradient-to-r from-accent to-accent dark:from-accentDark/50 dark:to-accentDark/50 bg-[length:0px_6px] hover:bg-[length:100%_6px] bg-bottom bg-no-repeat transition-[background-size] duration-500'>{blog.title}</span>
                         </h1>
                     </Link>
-                    <p className='inline-block mt-4 text-xl font-in'>{blog.description}</p>
+                    <p className='hidden sm:inline-block mt-4 md:text-lg lg:text-xl font-in'>{blog.description}</p>
                 </div>
             </article>
         </div>

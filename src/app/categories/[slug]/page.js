@@ -1,7 +1,7 @@
-import Categories from "../../components/Blog/Categories";
+import Categories from "../../../components/Blog/Categories";
 import { allBlogs } from "@/.contentlayer/generated";
 import GithubSlugger, { slug }  from "github-slugger";
-import BlogLayoutThree from "../../components/Blog/BlogLayoutThree";
+import BlogLayoutThree from "../../../components/Blog/BlogLayoutThree";
 
 
 const slugger = new GithubSlugger();
@@ -22,6 +22,16 @@ export async function generateStaticParams(){
     })
 
     return paths
+}
+
+export async function generateMetadata({ params }) {
+
+
+
+  return {
+    title: `${params.slug.replaceAll("-", " ")} Blogs`,
+    description: `Learn about ${params.slug === "all" ? "web development" : params.slug} through our collection of experts blogs and tutorials` ,
+  };
 }
 
 
