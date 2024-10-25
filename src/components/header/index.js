@@ -5,10 +5,12 @@ import {
   GithubIcon,
   LinkedinIcon,
   SunIcon,
+  MoonIcon,
   TwitterIcon,
 } from "@/src/components/header/Icons";
 import { useThemeSwitch } from "../Hooks/useThemeSwitch";
 import { useState } from "react";
+import { cx } from "@/src/app/utils";
 
 const Header = () => {
 const [mode, setMode] = useThemeSwitch()
@@ -41,8 +43,10 @@ const toggle = () =>{
         <Link href="/contact" className="mx-2">
           Contact
         </Link>
-        <button onClick={()=> setMode(mode === "light" ? "dark" : "light")}>
-          <SunIcon />
+        <button onClick={()=> setMode(mode === "light" ? "dark" : "light")} className={cx("w-6 h-6 ml-2 flex items-center justify-center rounded-full p-1", mode==='light' ? 'bg-dark text-light ' : 'bg-light text-dark')}>
+          {
+            mode==="light" ? <MoonIcon className={"fill-dark"}/> : <SunIcon className={"fill-dark"}/>
+          }
         </button>
       </nav>
       <nav className="sm:flex hidden w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize items-center fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
@@ -55,8 +59,10 @@ const toggle = () =>{
         <Link href="/contact" className="mx-2">
           Contact
         </Link>
-        <button onClick={()=> setMode(mode === "light" ? "dark" : "light")}>
-          <SunIcon />
+        <button onClick={()=> setMode(mode === "light" ? "dark" : "light")} className={cx("w-6 h-6 ml-2 flex items-center justify-center rounded-full p-1", mode==='light' ? 'bg-dark text-light ' : 'bg-light text-dark')}>
+          {
+            mode==="light" ? <MoonIcon className={"fill-dark"}/> : <SunIcon className={"fill-dark"}/>
+          }
         </button>
       </nav>
       <div className="hidden sm:flex items-center">

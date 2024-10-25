@@ -1,7 +1,7 @@
 const siteMetadata = {
-    title: 'Next.js Blog With Tailwind CSS and Contentlayer',
-    author: 'CodeBucks',
-    headerTitle: 'Next.js Blog',
+    title: 'Universo de posibilidades',
+    author: 'LuismaBr',
+    headerTitle: 'U&niverso Videoludico',
     description: 'A blog created with Next.js, Tailwind.css and contentlayer.',
     language: 'en-us',
     theme: 'system', // system, dark or light

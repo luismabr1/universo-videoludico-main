@@ -3,7 +3,8 @@ import "./globals.css";
 import Header from "../components/header";
 import Footer from "../components/Footer";
 import siteMetadata from "./utils/siteMetaData";
-import Script from "next/script";
+
+import ThemeScript from "../components/ThemeScript";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -58,15 +59,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-mr bg-light dark:bg-black`}
       >
+          <ThemeScript />
 
-        <Script>
-          {
-            `document.documentElement.classList.toggle(
-  'dark',
-  localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-)`
-          }
-        </Script>
         <Header />
         {children}
         <Footer />

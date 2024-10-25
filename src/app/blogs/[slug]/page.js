@@ -67,6 +67,30 @@ export default function BlogPage({ params }) {
   const blog = allBlogs.find((blog) => ({
     slug: blog._raw.flattenedPath === params.slug,
   }));
+
+  let imageList = [siteMetadata.socialBanner];
+  if (blog.image) {
+    imageList =
+      typeof blog.image.filePath === "string"
+        ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
+        : blog.image;
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": blog.title,
+    "description": blog.description,
+    "image": imageList,
+    "datePublished": new Date(blog.publishedAt).toISOString(),
+    "dateModified": new Date(blog.updatedAt || blog.publishedAt).toISOString(),
+    "author": [{
+        "@type": "Person",
+        "name": blog?.author ? [blog.author] : siteMetadata.author,
+        "url": siteMetadata.twitter,
+      }]
+  }
+
   return (
     <article>
       <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
@@ -112,7 +136,7 @@ export default function BlogPage({ params }) {
                     <a
                       href={`#${heading.slug}`}
                       data-level={heading.level}
-                      className="data-[level=two]:pl-0 data-[level=two]:pt-2 data-[level=two]:border-t border-solid border-dark/40 data-[level=three]:pl-6 flex items-center justify-start
+                      className="data-[level=two]:pl-0 data-[level=two]:pt-2 data-[level=two]:border-t border-solid border-dark/40 data-[level=three]:pl-4 sm:data-[level=three]:pl-6 flex items-center justify-start
                                        "
                     >
                       {heading.level === "three" ? (
