@@ -7,7 +7,7 @@ import Tag from "../../../components/Elements/Tags";
 import RenderMdx from "../../../components/Blog/RenderMdx";
 import { urlToUrlWithoutFlightMarker } from "next/dist/client/components/app-router";
 import siteMetadata from "../../utils/siteMetaData";
-
+export const runtime = 'edge';
 export async function generateStaticParams({ params }) {
   return allBlogs.map((blog) => blog._raw.flattenedPath === params.slug);
 }
