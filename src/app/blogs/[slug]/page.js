@@ -7,7 +7,6 @@ import Tag from "../../../components/Elements/Tags";
 import RenderMdx from "../../../components/Blog/RenderMdx";
 import { urlToUrlWithoutFlightMarker } from "next/dist/client/components/app-router";
 import siteMetadata from "../../utils/siteMetaData";
-export const runtime = 'edge';
 export async function generateStaticParams({ params }) {
   return allBlogs.map((blog) => blog._raw.flattenedPath === params.slug);
 }
@@ -19,26 +18,26 @@ export async function generateMetadata({ params }) {
   if (!blog) {
     return;
   }
-
+  
   const publishedAt = new Date(blog.publishedAt).toISOString();
   const modifieddAt = new Date(
     blog.updatedAt || blog.publishedAt
   ).toISOString();
-
+  
   let imageList = [siteMetadata.socialBanner];
-
+  
   if (blog.image) {
     imageList =
-      typeof blog.image.filePath === "string"
-        ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
-        : blog.image;
+    typeof blog.image.filePath === "string"
+    ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
+    : blog.image;
   }
   const ogImages = imageList.map((img) => {
     return { url: img.includes("http") ? img : siteMetadata.siteUrl + img };
   });
-
+  
   const authors = blog?.author ? [blog.author] : siteMetadata.author;
-
+  
   return {
     title: blog.title,
     description: blog.description,
@@ -72,10 +71,10 @@ export default function BlogPage({ params }) {
   if (blog.image) {
     imageList =
       typeof blog.image.filePath === "string"
-        ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
+      ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
         : blog.image;
   }
-
+  
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -85,12 +84,12 @@ export default function BlogPage({ params }) {
     "datePublished": new Date(blog.publishedAt).toISOString(),
     "dateModified": new Date(blog.updatedAt || blog.publishedAt).toISOString(),
     "author": [{
-        "@type": "Person",
-        "name": blog?.author ? [blog.author] : siteMetadata.author,
-        "url": siteMetadata.twitter,
-      }]
+      "@type": "Person",
+      "name": blog?.author ? [blog.author] : siteMetadata.author,
+      "url": siteMetadata.twitter,
+    }]
   }
-
+  
   return (
     <article>
       <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
@@ -115,7 +114,7 @@ export default function BlogPage({ params }) {
             className="aspect-square w-full h-full object-cover object-center"
             priority
             sizes="100vw"
-          />
+            />
         </div>
       </div>
       <BlogDetails blog={blog} slug={params.slug} />
@@ -125,7 +124,7 @@ export default function BlogPage({ params }) {
           <details
             className="border-[1px] border-solid border-dark dark:border-light dark:text-light text-dark rounded-lg p-4 sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
             open
-          >
+            >
             <summary className="text-lg font-semibold capitalize cursor-pointer">
               Table Of Content
             </summary>
@@ -159,3 +158,5 @@ export default function BlogPage({ params }) {
 }
 
 
+
+export const runtime = 'edge';

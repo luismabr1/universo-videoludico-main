@@ -3,7 +3,7 @@ import { allBlogs } from "@/.contentlayer/generated";
 import GithubSlugger, { slug }  from "github-slugger";
 import BlogLayoutThree from "../../../components/Blog/BlogLayoutThree";
 
-export const runtime = 'edge';
+
 const slugger = new GithubSlugger();
 export async function generateStaticParams(){
     const categories = []
@@ -68,3 +68,4 @@ const CategoryPage = ({ params }) => {
 };
 
 export default CategoryPage;
+export const runtime = 'edge';
