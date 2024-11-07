@@ -10,7 +10,6 @@ import siteMetadata from "../../utils/siteMetaData";
 export async function generateStaticParams({ params }) {
   return allBlogs.map((blog) => blog._raw.flattenedPath === params.slug);
 }
-
 export async function generateMetadata({ params }) {
   const blog = allBlogs.find((blog) => ({
     slug: blog._raw.flattenedPath === params.slug,
@@ -66,7 +65,6 @@ export default function BlogPage({ params }) {
   const blog = allBlogs.find((blog) => ({
     slug: blog._raw.flattenedPath === params.slug,
   }));
-
   let imageList = [siteMetadata.socialBanner];
   if (blog.image) {
     imageList =

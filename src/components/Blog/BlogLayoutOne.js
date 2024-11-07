@@ -3,7 +3,7 @@ import Tags from "../Elements/Tags";
 import Link from "next/link";
 import { slug } from "github-slugger";
 
-const BlogLayoutPosts = ({ blog }) => {
+const BlogLayoutOne = ({ blog }) => {
   return (
     <div className="group inline-block overflow-hidden rounded-xl">
       <div className="absolute top-0 left-0 botton-0 right-0 h-full bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-3xl z-10"></div>
@@ -35,4 +35,4 @@ const BlogLayoutPosts = ({ blog }) => {
   );
 };
 
-export default BlogLayoutPosts;
+export default BlogLayoutOne;

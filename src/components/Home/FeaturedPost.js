@@ -10,13 +10,13 @@ const FeaturedPost = ({ blogs }) => {
 
       <div className="grid grid-cols-2 grid-row-2 gap-6  sm:Lt-16">
         <article className="col-span-2 sxl:col-span-1 row-span-2 relative">
-            <BlogLayoutOne blog={sortedBlogs[2]} />
+            <BlogLayoutOne blog={sortedBlogs[0]} />
         </article>
         <article className="col-span-2  sm:col-span-1 row-span-1 relative">
-           <BlogLayoutTwo blog={sortedBlogs[3]}/>
+           <BlogLayoutTwo blog={sortedBlogs[0]}/>
         </article>
         <article className="col-span-2  sm:col-span-1 row-span-1 relative">
-            <BlogLayoutTwo blog={sortedBlogs[4]}/>
+            <BlogLayoutTwo blog={sortedBlogs[0]}/>
         </article>
       </div>
     </section>
