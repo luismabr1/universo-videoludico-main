@@ -48,9 +48,9 @@ const Footer = () => {
         <a href="http://example.com" className="inline-block w-6 h-6 mr-4 ">
           <LinkedinIcon className="hover:scale-125 transition-all ease duration-200" />
         </a>
-        <a href="http://example.com" className="inline-block w-6 h-6 mr-4">
+{/*         <a href="http://example.com" className="inline-block w-6 h-6 mr-4">
           <TwitterIcon className="hover:scale-125 transition-all ease duration-200" />
-        </a>
+        </a> */}
         <a href="http://example.com" className="inline-block w-6 h-6 mr-4">
         <GithubIcon className="dark:invert-0 invert  hover:scale-125 transition-all ease duration-200" />
         </a>
