@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: "#1b1b1b",
-        light: "#fff",
-        accent: "#7B00D3",
-        accentDark: "#ffdb4d",
-        gray: "#747474",
+        dark: "#121212",
+        light: "#f5f5f5",
+        accent: "#ff2400",
+        accentDark: "#00aefe",
+        gray: "#222222",
       },
       animation:{
         roll: "roll 24s linear infinite"
