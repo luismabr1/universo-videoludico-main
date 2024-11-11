@@ -6,18 +6,22 @@ import { slug } from "github-slugger";
 const BlogLayoutOne = ({ blog }) => {
   return (
     <div className="group inline-block overflow-hidden rounded-xl">
-      <div className="absolute top-0 left-0 botton-0 right-0 h-full bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-3xl z-10"></div>
-      <Image
-        src={blog.image.filePath.replace("../public", "")}
-        placeholder="blur"
-        blurDataURL={blog.image.blurhashDataUrl}
-        alt={blog.title}
-        width={blog.image.width}
-        height={blog.image.height}
-        className="w-full h-full object-center object-cover rounded-xl group-hover:scale-105 transition-all ease duration-300"
-        sizes="(max-width: 1180px) 100vw, 50vw"
+      <div
+        className="absolute top-0 left-0 bottom-0 right-0 h-full
+            bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-xl z-10
+            "
+      /><Image
+      src={blog.image.filePath.replace("../public", "")}
+      placeholder="blur"
+      blurDataURL={blog.image.blurhashDataUrl}
+      alt={blog.title}
+      width={blog.image.width}
+      height={blog.image.height}
+      className="w-full h-full object-center object-cover rounded-xl group-hover:scale-105 transition-all ease duration-300 -z-10"
+      sizes="(max-width: 1180px) 100vw, 50vw"
+      priority
       />
-      <div className="w-full absolute bottom-0 p-4 xs:p-6 sm:p-10 z-20">
+      <div className="w-full h-full absolute bottom-0 p-4 xs:p-6 sm:p-10 z-20">
         <Tags
           link={`/categories/${slug(blog.tags[0])}`}
           name={blog.tags[0]}
