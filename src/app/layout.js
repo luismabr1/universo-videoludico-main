@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "../components/header";
 import Footer from "../components/Footer";
 import siteMetadata from "./utils/siteMetaData";
-
+import Head from "next/head"; // Importa el componente Head
 import ThemeScript from "../components/ThemeScript";
 
 const geistSans = localFont({
