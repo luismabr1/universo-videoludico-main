@@ -5,7 +5,6 @@ import { slug } from 'github-slugger'
 import ViewCounter from './ViewCounter'
 
 const BlogDetails = ({blog, slug: blogSlug}) => {
-    console.log(blog)
   return (
     <div className='px-2 md:px-10 bg-accent dark:bg-accentDark text-light dark:text-dark py-2 flex items-center justify-around flex-wrap text-lg sm:text-xl font-medium mx-5 md:mx-10 rounded-lg'>
       <time className='m-3'>

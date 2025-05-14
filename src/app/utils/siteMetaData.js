@@ -2,7 +2,7 @@ const siteMetadata = {
     title: 'Universo de Posibilidades',
     author: 'LuismaBR',
     headerTitle: 'Universo Videoludico',
-    description: 'A blog created with Next.js, Tailwind.css and contentlayer.',
+    description: 'A blog created to share my knowledge and experiences in the world of video games, game design, and gamification.',
     language: 'en-us',
     theme: 'system', // system, dark or light
     siteUrl: 'https://www.universovideoludico.com/', // your website URL

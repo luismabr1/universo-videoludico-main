@@ -81,6 +81,64 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
 
 }
 
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Asegura que el hero tenga un fondo consistente */
+.hero-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mejora la legibilidad del título */
+.hero-title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  color: #ffffff; /* Blanco puro */
+  transition: color 0.2s ease; /* Suave transición para cambios de tema */
+}
+
+/* Ajusta la capa de oscurecimiento para imágenes claras */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.7); /* Negro con 70% opacidad */
+  transition: background 0.2s ease;
+}
+
+/* Mejora responsividad */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.75rem; /* Reduce tamaño en móviles */
+    width: 90%; /* Más ancho en pantallas pequeñas */
+  }
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.featured-post-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-post-title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.featured-post-gradient {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+}
+
+@media (max-width: 768px) {
+  .featured-post-title {
+    font-size: 1rem;
+  }
+}
+
+
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
