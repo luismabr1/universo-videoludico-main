@@ -62,6 +62,8 @@ export default function RootLayout({ children }) {
           content="ca-pub-7915919873828180"
         />
       </Head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7915919873828180"
+     crossorigin="anonymous"></script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-mr bg-light dark:bg-black`}
       >
