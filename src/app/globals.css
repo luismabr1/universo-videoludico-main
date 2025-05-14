@@ -137,6 +137,43 @@ code[data-line-numbers-max-digits="4"] > [data-line]::before {
   }
 }
 
+/* styles/globals.css */
+.mdx-content {
+  @apply prose prose-lg max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-gray dark:text-light;
+}
+
+.mdx-content h1 {
+  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-dark dark:text-light mt-8 mb-4;
+}
+
+.mdx-content h2 {
+  @apply text-2xl sm:text-3xl font-semibold text-dark dark:text-light mt-6 mb-3 border-l-4 border-accent pl-4;
+}
+
+.mdx-content p {
+  @apply text-base sm:text-lg leading-relaxed my-4;
+}
+
+.mdx-content img {
+  @apply w-full h-auto rounded-lg shadow-lg my-6 mx-auto max-w-2xl object-cover;
+}
+
+.mdx-content blockquote {
+  @apply border-l-4 border-accent dark:border-accentDark pl-4 py-2 my-6 italic text-gray bg-light/10 dark:bg-dark/10 rounded-r-lg;
+}
+
+.mdx-content strong {
+  @apply font-bold text-accent dark:text-accentDark;
+}
+
+.mdx-content em {
+  @apply italic text-gray;
+}
+
+.mdx-content a {
+  @apply text-accent dark:text-accentDark underline hover:text-accent/80 dark:hover:text-accentDark/80 transition-colors;
+}
+
 
 
 /* :root {

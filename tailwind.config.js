@@ -8,13 +8,13 @@ module.exports = {
   darkMode: 'selector',
   theme: {
     extend: {
-      colors: {
-        dark: "#1A202C",
-        light: "#f5f5f5",
-        accent: "#ff2400",
-        accentDark: "#00aefe",
-        gray: "#222222",
-      },
+    colors: {
+      dark: "#0A0F2A",       // Azul negro profundo, como un cielo estelar
+      light: "#F8FAFC",      // Blanco plateado, para textos o fondos claros
+      accent: "#FF2079",     // Rosa neón, vibrante para gaming y cosmos
+      accentDark: "#00DDEB", // Cian neón, futurista para modo oscuro
+      gray: "#6B7280",       // Gris azulado, para textos secundarios o fondos sutiles
+    },
       animation:{
         roll: "roll 24s linear infinite"
       },
